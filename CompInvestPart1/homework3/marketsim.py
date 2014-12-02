@@ -54,7 +54,11 @@ def get_actual_price(dt_start, dt_end, symbols):
 
     ldf_data = c_dataobj.get_data(ldt_timestamps, symbols, ls_keys)
     
-    df_data = ldf_data[0]
+    df_data = ldf_data[0]   # This is a list of dataframes.
+                            # Since we only got 'close' prices then
+                            # then we only got one entry in the list.
+                            # You may get the dateframe by getting
+                            # the first element in the list.
     
     for symbol in symbols:
         df_data[symbol].fillna(method='ffill')
